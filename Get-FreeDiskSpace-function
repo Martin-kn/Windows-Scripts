@@ -1,0 +1,7 @@
+Function getActualDiskSpace {
+$diskSpace = Get-CimInstance -ComputerName localhost win32_logicaldisk | where caption -eq "C:" | foreach-object {write " $($_.caption) $('{0:N2}' -f ($_.Size/1gb)) GB total, $('{0:N2}' -f ($_.FreeSpace/1gb)) GB free "}
+return $diskSpace
+}
+ 
+# OUTPUT E.G :
+# C: 119.40 GB total, 35.01 GB free

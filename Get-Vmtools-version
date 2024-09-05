@@ -1,0 +1,17 @@
+try{
+   cd 'C:\Program Files\VMware\VMware Tools' -ErrorAction stop
+   $Result = .\VMwareToolboxCmd.exe -v
+   $Result -replace '\(.*\)','' 
+   }
+Catch{
+     Write-Host "The VMware path does not exist"
+}
+ 
+
+# OUTPUT E.G:
+# If Vmtools is not installed:
+
+# " The VMware path does not exist "
+ 
+# If Vmtools is installed:
+# "12.3.5.46049" 
